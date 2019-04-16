@@ -1,0 +1,277 @@
+@font-face {
+  font-family: museoSans100;
+  src: url("../fonts/museosans-100-webfont.ttf"); }
+
+@font-face {
+  font-family: museoSans300;
+  src: url("../fonts/museosans_300-webfont.ttf"); }
+
+@font-face {
+  font-family: museoSans900;
+  src: url("../fonts/museosans_900-webfont.ttf"); }
+
+* {
+  padding: 0;
+  margin: 0; }
+
+a, a:hover {
+  text-decoration: none; }
+
+body {
+  font-size: 30px;
+  font-family: museoSans100, sans-serif;
+  max-width: 1640px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  color: #6c7177; }
+
+header {
+  padding: 20px 11% 20px 11%;
+  height: 95px;
+  display: flex;
+  position: relative; }
+  header .logo-text {
+    font-size: 1.3em;
+    font-family: museoSans300, sans-serif;
+    color: #2471ff;
+    line-height: 1.0;
+    align-self: center; }
+  header .logo-img {
+    height: 100%;
+    width: auto; }
+  header .nav-links {
+    margin-left: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 45%; }
+  header li {
+    margin-top: 38px;
+    list-style-type: none; }
+  header .link a {
+    font-family: museoSans900, sans-serif;
+    color: black;
+    font-size: 17px;
+    line-height: 55px;
+    padding: 37px 0;
+    border-bottom: 3px solid white;
+    box-sizing: border-box; }
+  header a:hover {
+    border-bottom: 4px solid #004ffa; }
+  header .contact-links,
+  header .open-nav-icon {
+    display: none; }
+
+.contact-links {
+  align-items: center;
+  padding: 0; }
+  .contact-links li {
+    margin: 0 15px 0 0;
+    list-style-type: none; }
+
+.facebook,
+.tweeter,
+.you-tube {
+  background-image: url("../images/icons/big-icons.png");
+  background-repeat: no-repeat;
+  cursor: pointer; }
+
+.facebook {
+  width: 26px;
+  height: 26px;
+  background-position: -2px -31px; }
+
+.tweeter {
+  width: 28px;
+  height: 25px;
+  background-position: -32px -32px; }
+
+.you-tube {
+  width: 30px;
+  height: 22px;
+  background-position: -61px -32px; }
+
+/*------------------------LOG IN SECTION-----------------------------------*/
+.main-h {
+  /*main heading used in login, news and slider section*/
+  text-align: center;
+  font-size: 2em;
+  margin: 20px auto;
+  letter-spacing: 0.3px;
+  font-weight: 100;
+  line-height: 1.1;
+  width: 62%; }
+
+.pic-text-warper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center !important; }
+
+.log-in-section {
+  background-image: url("../images/background-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 53.05%;
+  /* (img-height / img-width * container-width) */
+  position: relative; }
+  .log-in-section .log-in-heading {
+    color: white; }
+
+/*----------------------BUTTONS STYLE--------------------------------*/
+.btn {
+  padding: 3px 15px;
+  border-radius: 40px;
+  margin: 0 auto;
+  font-size: 68%;
+  display: flex;
+  align-items: center; }
+
+.btn:after {
+  content: "\203A";
+  font-size: 25px;
+  margin-left: 9px;
+  font-family: sans-serif; }
+
+.bth:active, .btn:focus {
+  outline: none; }
+
+.big-btn {
+  padding: 8px 18px; }
+
+.button-blue {
+  color: white;
+  background-color: #004ffa;
+  border: none; }
+
+.button-white {
+  color: #004ffa;
+  background-color: white;
+  border: 2px solid #004ffa; }
+
+.button-blue:hover {
+  background-color: #2471ff; }
+
+.button-white:hover {
+  background-color: #2471ff;
+  color: white;
+  border: 2px solid #2471ff; }
+
+/*------------------------MAIN SECTION--------------------------------*/
+main {
+  padding: 20px 11% 20px 11%;
+  margin-bottom: 20px; }
+  main h3, main h2 {
+    padding: 30px 0; }
+  main p, main li {
+    margin-bottom: 25px;
+    line-height: 1.2; }
+  main ul {
+    margin-left: 3%;
+    list-style-type: circle; }
+
+.blue-link {
+  /*used in footer also*/
+  color: #004ffa; }
+
+/*-----------------------------SLIDER SECTION--------------------------------*/
+#slider {
+  position: relative;
+  color: white; }
+  #slider .show-slide {
+    position: relative;
+    animation: slide 0.5s ease-in; }
+  #slider .image-description-warper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; }
+  #slider img {
+    width: 100%;
+    height: auto; }
+  #slider .slider-text {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 20px; }
+  #slider .fade {
+    -webkit-animation: fadein 1.5s linear 1 normal forwards; }
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+  #slider .prev, #slider .next {
+    cursor: pointer;
+    position: absolute;
+    top: 41%;
+    padding: 8px 16px;
+    border: 4px solid white;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4em;
+    z-index: 100; }
+  #slider .prev {
+    left: 11%; }
+  #slider .next {
+    right: 11%; }
+
+/*-----------------------------MORE NEWS SECTION--------------------------------*/
+.more-news-section {
+  padding: 40px 11% 40px 11%; }
+  .more-news-section h1 {
+    text-align: center;
+    margin: 25px auto; }
+  .more-news-section .figures-warper {
+    display: flex;
+    justify-content: space-between; }
+  .more-news-section figure {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding-bottom: 10px; }
+  .more-news-section .image-warper {
+    margin: 0 0 20px; }
+  .more-news-section figcaption {
+    color: grey;
+    margin-bottom: 20px; }
+  .more-news-section img {
+    width: 100%;
+    height: auto; }
+
+/*-----------------------------FOOTER SECTION--------------------------------*/
+footer {
+  padding: 30px 11% 30px 11%;
+  background-color: #f7f7f7;
+  border-top: #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e0e1e2;
+  margin-top: 40px; }
+  footer .contact-links {
+    display: flex;
+    align-items: center;
+    padding: 0; }
+    footer .contact-links li {
+      margin: 0 15px 0 0;
+      list-style-type: none; }
+  footer .facebook:hover {
+    background-position: -2px -2px; }
+  footer .tweeter:hover {
+    background-position: -32px -3px; }
+  footer .you-tube:hover {
+    background-position: -61px -3px; }
