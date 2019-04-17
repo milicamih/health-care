@@ -1,0 +1,17 @@
+[
+  {
+    "imagePath": "./assets/images/slider-images/slider-pic1.jpg",
+    "imageHeadline": "Itaque earum rerum hic tenetur",
+    "imageDescription":  "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti"
+  },
+  {
+    "imagePath": "./assets/images/slider-images/slider-pic2.jpg",
+    "imageHeadline": "Nam libero tempore, cum soluta",
+    "imageDescription":  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Vestibulum in urna quis neque porttitor sagittis."
+  },
+  {
+    "imagePath": "./assets/images/slider-images/slider-pic3.jpg",
+    "imageHeadline": "Itaque earum rerum hic tenetur",
+    "imageDescription":  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+  }
+]

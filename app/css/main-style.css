@@ -71,7 +71,7 @@ header {
 .facebook,
 .tweeter,
 .you-tube {
-  background-image: url("../images/icons/big-icons.png");
+  background-image: url("../assets/images/icons/big-icons.png");
   background-repeat: no-repeat;
   cursor: pointer; }
 
@@ -113,7 +113,7 @@ header {
   justify-content: center !important; }
 
 .log-in-section {
-  background-image: url("../images/background-img.jpg");
+  background-image: url("../assets/images/background-img.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -205,7 +205,7 @@ main {
     text-align: center;
     margin-bottom: 20px; }
   #slider .fade {
-    -webkit-animation: fadein 1.5s linear 1 normal forwards; }
+    -webkit-animation: fadein 1.5s linear forwards; }
 
 @-webkit-keyframes fadein {
   from {

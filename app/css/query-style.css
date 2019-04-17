@@ -56,17 +56,17 @@
   footer li {
     margin: 0 7px 0 0; }
   footer .facebook {
-    background-image: url("../images/icons/small-icons.png");
+    background-image: url("../assets/images/icons/small-icons.png");
     width: 17px;
     height: 17px;
     background-position: -1px -2px; }
   footer .tweeter {
-    background-image: url("../images/icons/small-icons.png");
+    background-image: url("../assets/images/icons/small-icons.png");
     width: 17px;
     height: 15px;
     background-position: -21px -3px; }
   footer .you-tube {
-    background-image: url("../images/icons/small-icons.png");
+    background-image: url("../assets/images/icons/small-icons.png");
     width: 20px;
     height: 14px;
     background-position: -40px -3px; } }
@@ -81,7 +81,7 @@
     header .logo-text {
       font-size: 1.5em; }
   .log-in-section {
-    background-image: url("../images/bacground-tablet.jpg");
+    background-image: url("../assets/images/bacground-tablet.jpg");
     padding-top: 64% !important; }
   main {
     padding: 20px; }

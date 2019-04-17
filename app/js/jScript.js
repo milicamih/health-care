@@ -1,10 +1,10 @@
  // GLOBAL VARIABLES ---------------------
- let slideImages;
- let current = 0;
+ var slideImages;
+ var current = 0;
  
  async function loadJSON (url) {
   try {
-    const res = await fetch(url);
+    var res = await fetch(url);
     return await res.json();
   } catch (error) {
     throw Error ("JSON path is not valid");
@@ -36,14 +36,14 @@ function hideSpinner() {
 }
 
 function onClickOpenNav() { 
-  const nav = document.getElementById("nav");
+  var nav = document.getElementById("nav");
 
   nav.classList.toggle("nav-links-active");  
 }
 
 
  function createSliderTemplate(imagesData) {
-  let sliderContent = '';
+  var sliderContent = '';
   sliderContent += createSingleSliderTemplate(imagesData[0], 'concat us');
   sliderContent += createSingleSliderTemplate(imagesData[1], 'read more');
   sliderContent += createSingleSliderTemplate(imagesData[2], 'read more');   

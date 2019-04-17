@@ -1,54 +1,84 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var gulpIf = require('gulp-if');
-var uglify = require('gulp-uglify');
-var cssnano = require('gulp-cssnano');
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-var del = require('del');
-var useref = require('useref');
-	
-gulp.task('sass', function() {
-  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-    .pipe(sass())
-    .pipe(gulp.dest('app/css'))   
-})
 
-gulp.task('css', function(){   //minify css
-  return gulp.src('app/css/**/*.css')
-     .pipe(sass())
-     .pipe(cssnano())
-     .pipe(gulp.dest('dist/css'));
+const gulp = require( 'gulp' );
+browserSync  = require( 'browser-sync' ).create();
+const sass  = require( 'gulp-sass' );
+var useref = require('gulp-useref');
+const cleanCSS  = require( 'gulp-clean-css' );
+const babel = require('gulp-babel');
+const uglify  = require( 'gulp-uglify' );
+const imagemin  = require( 'gulp-imagemin' );
+const cache = require ( 'gulp-cache' );
+ 
+function style() {
+  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss
+  .pipe(sass().on('error', sass.logError))
+  .pipe(gulp.dest('app/css'))
+  .pipe(browserSync.stream());
+}
+
+function watch() {
+  browserSync.init({
+    server: {
+      baseDir: 'app'
+    }
+  });
+  gulp.watch('app/scss/**/*.scss', style);
+  gulp.watch('app/*.html').on('change', browserSync.reload);
+  gulp.watch('app/js/*.js').on('change', browserSync.reload);
+}
+
+gulp.task('html', function() {
+  return gulp.src('app/*.html')
+  .pipe(useref())
+  .pipe(gulp.dest('dist'))
 });
 
-gulp.task('useref', function(){ //uglify js
-  return gulp.src('./app/*.html')
-    .pipe(useref())
-    .pipe(gulpIf('./app/js/*.js', uglify()))
-    .pipe(gulp.dest('dist'))
+gulp.task('minify-css', () => {
+  return gulp.src('app/css/**/*.css')
+ .pipe(cleanCSS())
+ .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('script', () => {
+  return gulp.src('app/js/*.js')
+      .pipe(babel({
+          presets: ['@babel/env']
+      }))
+      .pipe(uglify())
+      .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('images', function(){  //optimizing images
-  return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg)')
-  .pipe(cache(imagemin({
-      interlaced: true
-    })))
-  .pipe(gulp.dest('dist/assets/images'))
+   return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg)')
+   .pipe(cache(imagemin({
+       interlaced: true
+     })))
+   .pipe(gulp.dest('dist/assets/images'))
 });
 
 gulp.task('fonts', function() {  //copy fonts in dist, they are alredy optimized
-  return gulp.src('app/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts'))
+   return gulp.src('app/fonts/**/*')
+   .pipe(gulp.dest('dist/fonts'))
 })
 
-gulp.task('clean:dist', function() {  //cleaning up generated files
-  return del.sync('dist');
-})
-
-gulp.task('watch', function(){
-  gulp.watch('app/scss/**/*.scss', gulp.series('sass'));
+gulp.task('json', done =>  {
+  gulp.src('app/assets/*.json')
+  .pipe(gulp.dest('dist/assets'));
+  done();
 });
 
+
+ exports.style = style;
+ exports.watch = watch;
+
+gulp.task('build', gulp.series(
+   'minify-css',
+   'script',
+   'images',
+   'fonts',
+   'json',
+   'html'
+));
 
 
 
