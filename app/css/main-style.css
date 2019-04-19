@@ -197,6 +197,7 @@ main {
   color: white; }
   #slider .show-slide {
     position: relative;
+    display: none;
     animation: slide 0.5s ease-in; }
   #slider .image-description-warper {
     position: absolute;

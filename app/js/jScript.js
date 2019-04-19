@@ -1,50 +1,41 @@
- // GLOBAL VARIABLES ---------------------
- var slideImages;
- var current = 0;
- 
- function loadJSON(callback) {
+// GLOBAL VARIABLES ---------------------
+var slideImages;
+var currentSliderImgIndex = 0;
 
-   var xobj = new XMLHttpRequest();
-   xobj.overrideMimeType("application/json");
-   xobj.open('GET', 'assets/health-care.json' , true);
-   xobj.onreadystatechange = function () {
-      if (xobj.readyState == 4 && xobj.status == "200") {
-  
-  // .open will NOT return a value but simply returns undefined in async mode so use a callback
-        callback(xobj.responseText);  
-      }
-   }
-   xobj.send(null);
-  
+function loadJSON(callback) {
+  let xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open('GET', 'assets/health-care.json', true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+
+      // .open will NOT return a value but simply returns undefined in async mode so use a callback
+      callback(xobj.responseText);
+    }
   }
-  
-  window.addEventListener('load', function() {
+  xobj.send(null);
+}
 
-   loadJSON(function(response) {
-   
-    var jsonImages = JSON.parse(response);
+window.addEventListener('load', function () {
+  loadJSON(function (response) {
+    let jsonImages = JSON.parse(response);
     createSliderTemplate(jsonImages);
     slideImages = document.getElementsByClassName("show-slide");
-    startSlide();
-    });
-  })
- 
+    startSlider();
+  });
+})
 
+function onClickOpenNav() {
+  let nav = document.getElementById("nav");
+  nav.classList.toggle("nav-links-active");
+}
 
-
-  function onClickOpenNav() { 
-    var nav = document.getElementById("nav");
-
-    nav.classList.toggle("nav-links-active");  
- }
-
-
- function createSliderTemplate(imagesData) {
-  var sliderContent = '';
+function createSliderTemplate(imagesData) {
+  let sliderContent = '';
   sliderContent += createSingleSliderTemplate(imagesData[0], 'concat us');
   sliderContent += createSingleSliderTemplate(imagesData[1], 'read more');
-  sliderContent += createSingleSliderTemplate(imagesData[2], 'read more');   
-  
+  sliderContent += createSingleSliderTemplate(imagesData[2], 'read more');
+
   document.getElementById('slider').innerHTML += sliderContent;
 }
 
@@ -60,35 +51,33 @@ function createSingleSliderTemplate(imageData, buttonText) {
   `;
 }
 
-//clear all images
-function reset() {
-  for(let i=0; i<slideImages.length; i++){
-    slideImages[i].style.display = "none";
-  }
-}  
-
-//init slider
-function startSlide() {
-  reset();
-  slideImages[0].style.display = "block";
+function hideSliderImage(imageIndex) {
+  slideImages[imageIndex].style.display = "none";
 }
 
-function plusSlides() {
- if(current<slideImages.length-1){
-    reset();
-    slideImages[current+1].style.display = "block";
-    current++; 
-  }
-  slideImages[current].style.display = "block";
+function showSliderImage(imageIndex) {
+  slideImages[imageIndex].style.display = "block";
 }
 
-function minusSlides() {
-  if(current>0){
-    reset();
-    slideImages[current-1].style.display = "block";
-    current--;
-  }  
-   slideImages[current].style.display = "block";
+// init slider
+function startSlider() {
+  showSliderImage(0);
+}
+
+function onClickNextSlide() {
+  if (currentSliderImgIndex < slideImages.length - 1) {
+    hideSliderImage(currentSliderImgIndex);
+    currentSliderImgIndex++;
+    showSliderImage(currentSliderImgIndex);
+  }
+}
+
+function onClickPrevSlide() {
+  if (currentSliderImgIndex > 0) {
+    hideSliderImage(currentSliderImgIndex);
+    currentSliderImgIndex--;
+    showSliderImage(currentSliderImgIndex);
+  }
 }
 
 

@@ -208,6 +208,9 @@ UpgradeLog*.htm
 *.bim.layout
 *.bim_*.settings
 
+# Dist folder
+dist/
+
 # Microsoft Fakes
 FakesAssemblies/
 
