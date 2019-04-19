@@ -2,44 +2,41 @@
  var slideImages;
  var current = 0;
  
- async function loadJSON (url) {
-  try {
-    var res = await fetch(url);
-    return await res.json();
-  } catch (error) {
-    throw Error ("JSON path is not valid");
+ function loadJSON(callback) {
+
+   var xobj = new XMLHttpRequest();
+   xobj.overrideMimeType("application/json");
+   xobj.open('GET', 'assets/health-care.json' , true);
+   xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+  
+  // .open will NOT return a value but simply returns undefined in async mode so use a callback
+        callback(xobj.responseText);  
+      }
+   }
+   xobj.send(null);
+  
   }
-}
+  
+  window.addEventListener('load', function() {
 
-
-window.addEventListener('load', function() {
-
-  loadJSON('health-care.json').then(data => {
-    createSliderTemplate(data);
-
-    slideImages = document.getElementsByClassName("show-slide");
-    
-    startSlide();
-
-  }, error => {
+   loadJSON(function(response) {
    
-    alert('Something went wrong: ' + error);
-  });
-})
+    var jsonImages = JSON.parse(response);
+    createSliderTemplate(jsonImages);
+    slideImages = document.getElementsByClassName("show-slide");
+    startSlide();
+    });
+  })
  
-function showSpinner() {
-  document.getElementById("spinner").style.display = "flex";
-}
 
-function hideSpinner() {
-  document.getElementById("spinner").style.display = "none";
-}
 
-function onClickOpenNav() { 
-  var nav = document.getElementById("nav");
 
-  nav.classList.toggle("nav-links-active");  
-}
+  function onClickOpenNav() { 
+    var nav = document.getElementById("nav");
+
+    nav.classList.toggle("nav-links-active");  
+ }
 
 
  function createSliderTemplate(imagesData) {

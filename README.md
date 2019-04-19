@@ -1,14 +1,21 @@
 This project was generated with gulp version 4.0.0.
 
-## Run project
+## Getting Started
 
-Run `npm install` to run project
+In bash/terminal/command line, cd into your project directory.
+Run `npm install` to instal required files and dependencies.
 
 ## Making changes
 
-Run `gulp wathc` to make changes (compile scss in css, and browser reload)
+Run `gulp wathc` to make changes in project
+Gulp watch automatically compiles scss in css and applies changes using BrowserSync when you make changes to your source files.
 
 ## Build
 
-Run `gulp build` to build the project. To minify code and put minify code in dist folder/
+Run `gulp build` to build the project. 
+Add your source files to the appropriate app subdirectories. Gulp will process and and compile them into dist.
 
+JavaScript files in the app/js directory will be compiled to dist/js. 
+Files in the app/css directory will be compiled to dist/css.
+Image files placed in the app/assets/images directory will be optimized  and compiled into dist/svg.
+Other files and folders placed in app directory will be copied as-is into the dist directory.

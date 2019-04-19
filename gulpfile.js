@@ -27,28 +27,28 @@ function watch() {
   gulp.watch('app/js/*.js').on('change', browserSync.reload);
 }
 
-gulp.task('html', function() {
+gulp.task('html', function() { //copy html in dist
   return gulp.src('app/*.html')
   .pipe(useref())
   .pipe(gulp.dest('dist'))
 });
 
-gulp.task('minify-css', () => {
+gulp.task('minify-css', () => {//minify css files and place them in  dist folder
   return gulp.src('app/css/**/*.css')
  .pipe(cleanCSS())
  .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('script', () => {
+gulp.task('script', () => { //uglify js file and place them in  dist folder
   return gulp.src('app/js/*.js')
-      .pipe(babel({
+  .pipe(babel({
           presets: ['@babel/env']
       }))
       .pipe(uglify())
       .pipe(gulp.dest('dist/js'))
 });
 
-gulp.task('images', function(){  //optimizing images
+gulp.task('images', function(){  //optimizing images and place them in  dist folder
    return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg)')
    .pipe(cache(imagemin({
        interlaced: true
@@ -56,27 +56,26 @@ gulp.task('images', function(){  //optimizing images
    .pipe(gulp.dest('dist/assets/images'))
 });
 
-gulp.task('fonts', function() {  //copy fonts in dist, they are alredy optimized
+gulp.task('fonts', function() {  //copy fonts in dist
    return gulp.src('app/fonts/**/*')
    .pipe(gulp.dest('dist/fonts'))
 })
 
-gulp.task('json', done =>  {
+gulp.task('json', done =>  { //copy fonts in dist
   gulp.src('app/assets/*.json')
   .pipe(gulp.dest('dist/assets'));
   done();
 });
 
-
  exports.style = style;
  exports.watch = watch;
 
 gulp.task('build', gulp.series(
-   'minify-css',
+   'json', 
+   'minify-css', 
+   'images', 
+   'fonts', 
    'script',
-   'images',
-   'fonts',
-   'json',
    'html'
 ));
 

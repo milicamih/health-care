@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: museoSans300;
-  src: url("../fonts/museosans_300-webfont.ttf"); }
+  src: url("../fonts/museosans-300-webfont.ttf"); }
 
 @font-face {
   font-family: museoSans900;
@@ -43,20 +43,31 @@ header {
     margin-left: auto;
     display: flex;
     justify-content: space-around;
-    width: 45%; }
+    width: 45%;
+    align-items: stretch; }
   header li {
-    margin-top: 38px;
-    list-style-type: none; }
+    list-style-type: none;
+    display: flex;
+    align-items: flex-end;
+    position: relative; }
   header .link a {
     font-family: museoSans900, sans-serif;
     color: black;
     font-size: 17px;
-    line-height: 55px;
-    padding: 37px 0;
-    border-bottom: 3px solid white;
-    box-sizing: border-box; }
-  header a:hover {
-    border-bottom: 4px solid #004ffa; }
+    padding: 15px 0;
+    box-sizing: border-box;
+    cursor: pointer; }
+  header a::before {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 0%;
+    background-color: #004ffa;
+    position: absolute;
+    bottom: -20px;
+    transition: all 1s ease-in-out; }
+  header a:hover::before {
+    width: 100%; }
   header .contact-links,
   header .open-nav-icon {
     display: none; }
@@ -177,7 +188,8 @@ main {
 
 .blue-link {
   /*used in footer also*/
-  color: #004ffa; }
+  color: #004ffa;
+  cursor: pointer; }
 
 /*-----------------------------SLIDER SECTION--------------------------------*/
 #slider {
@@ -230,7 +242,8 @@ main {
 
 /*-----------------------------MORE NEWS SECTION--------------------------------*/
 .more-news-section {
-  padding: 40px 11% 40px 11%; }
+  padding: 40px 11% 40px 11%;
+  margin-bottom: 20px; }
   .more-news-section h1 {
     text-align: center;
     margin: 25px auto; }

@@ -6,10 +6,6 @@
   .more-news-section,
   footer {
     padding: 20px 5% 20px 5%; }
-  header {
-    height: 80px; }
-  .link a {
-    padding: 22px 0 !important; }
   .nav-links {
     width: 60% !important; }
   .prev {
@@ -33,17 +29,19 @@
     transform: translateX(-100%);
     transition: transform 1s ease-out; }
   .link a, .link-last-child {
-    padding: 0 !important;
-    color: white !important;
-    border-bottom: none !important; }
+    padding: 30px;
+    color: white !important; }
   .link {
     margin: 0; }
+  a::before {
+    display: none !important; }
   .nav-links-active {
     visibility: visible;
     transform: translateX(0%);
     transition: transform 1s ease-in; }
   .contact-links {
-    display: flex !important; }
+    display: flex !important;
+    margin-top: 20px; }
   .open-nav-icon {
     margin-left: auto;
     display: flex !important;
